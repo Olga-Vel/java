@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Week1_CaesarC/src"/>
+	<classpathentry kind="src" path="Week2.0/src"/>
+	<classpathentry excluding="src/" kind="src" path="Week2.2"/>
+	<classpathentry kind="src" path="Week2.2/src"/>
+	<classpathentry kind="src" path="Week3.0/src"/>
+	<classpathentry kind="src" path="Week4.1/src"/>
+	<classpathentry kind="lib" path="Week1_CaesarC/lib/courserajava.jar"/>
+	<classpathentry kind="lib" path="Week2.0/lib/courserajava.jar"/>
+	<classpathentry kind="lib" path="Week3.0/lib/commons-csv-1.5.jar"/>
+	<classpathentry kind="lib" path="Week3.0/lib/courserajava.jar"/>
+	<classpathentry kind="lib" path="Week4.1/lib/commons-csv-1.5.jar"/>
+	<classpathentry kind="lib" path="Week4.1/lib/courserajava.jar"/>
+	<classpathentry kind="output" path="Week1_CaesarC/bin"/>
+</classpath>
