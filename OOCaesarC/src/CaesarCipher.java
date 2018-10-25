@@ -11,7 +11,7 @@ public class CaesarCipher {
 	}
 	//Write an encrypt method that has one String parameter named input. 
 	//This method returns a String that is the input encrypted using shiftedAlphabet.
-	public static String encrypt(String input) {
+	public String encrypt(String input) {
 		StringBuilder encrypted = new StringBuilder(input);
 				
 		for (int i =0; i < encrypted.length(); i++){

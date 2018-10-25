@@ -46,10 +46,10 @@ public class TestCaesarCipher {
 	    }
 	    static void simpleTests() {
 	        //FileResource fr = new FileResource();
-	        message = "iojtybrtibbrthbxtirthbbrthircnhcriyiiioi4ffstriii";
+	        message = "Can you imagine life WITHOUT the internet AND computers in your pocket?";
 	        System.out.println("Message:");
 	        System.out.println(message);
-	        CaesarCipher cc = new CaesarCipher(18);
+	        CaesarCipher cc = new CaesarCipher(15);
 	        String encrypted = cc.encrypt(message);
 	        System.out.println("Encrypted message:");
 	        System.out.println(encrypted);

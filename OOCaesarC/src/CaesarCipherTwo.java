@@ -1,17 +1,15 @@
 
 public class CaesarCipherTwo {
     private String alphabet;
-    private String shiftedAlphabet1;
-    private String shiftedAlphabet2;
     private int mainKey1;
     private int mainKey2;
+	private String shiftedAlphabet1;
+	private String shiftedAlphabet2;
     
     public CaesarCipherTwo(int key1, int key2) {
         alphabet = "abcdefghijklmnopqrstuvwxyz";
-        shiftedAlphabet1 = alphabet.substring(key1) +
-                           alphabet.substring(0, key1);
-        shiftedAlphabet2 = alphabet.substring(key2) + 
-                           alphabet.substring(0, key2);
+        shiftedAlphabet1 = alphabet.substring(key1) + alphabet.substring(0,key1);
+        shiftedAlphabet2 = alphabet.substring(key2) + alphabet.substring(0,key2);
         mainKey1 = key1;
         mainKey2 = key2;
     }
@@ -20,19 +18,19 @@ public class CaesarCipherTwo {
 		StringBuilder encrypted = new StringBuilder(input);
         String f = "";
         char x;
-        CaesarCipher cc1 = new CaesarCipher(mainKey1);
-        CaesarCipher cc2 = new CaesarCipher(mainKey2);
+        int index;
         for(int i = 0; i < encrypted.length(); i++) {
-            if(i % 2 == 0) {
-                f = cc1.encrypt(String.valueOf(encrypted.charAt(i)));
-                //convert string to character
-                x = f.charAt(0);
-                encrypted.setCharAt(i, x);
-            } else {
-                f = cc2.encrypt(String.valueOf(encrypted.charAt(i)));
-                x = f.charAt(0);
-                encrypted.setCharAt(i, x);
-            }
+        	index = alphabet.indexOf(Character.toLowerCase(encrypted.charAt(i)));
+        	if(index != -1){
+	            if(i % 2 == 0) {
+	                x = shiftedAlphabet1.charAt(index);
+	                encrypted.setCharAt(i, x);
+	            } else {
+	                x = shiftedAlphabet2.charAt(index);
+	                encrypted.setCharAt(i, x);
+	            }
+	            //System.out.println(input.charAt(i)+" -> " + x);
+        	}
         }
         return encrypted.toString();
 	}
@@ -53,12 +51,12 @@ public class CaesarCipherTwo {
             dkey2 = 26 - (4 - key2);
         }
         
-        //System.out.println("key1: " + dkey1 + " key2: " + dkey2);
+        System.out.println("key1: " + dkey1 + " key2: " + dkey2);
         CaesarCipherTwo cc = new CaesarCipherTwo(26 - dkey1,26 - dkey2);
         return cc.encrypt(encrypted);
     }
     public String decrypt(String encrypted) {
-              
+        
         //System.out.println("key1: " + dkey1 + " key2: " + dkey2);
         CaesarCipherTwo cc = new CaesarCipherTwo(26 - mainKey1,26 - mainKey2);
         return cc.encrypt(encrypted);
