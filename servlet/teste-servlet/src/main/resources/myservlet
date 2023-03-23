@@ -1,0 +1,37 @@
+<html>
+<head>
+<script type="text/javascript">
+function addHighlight(target) {
+    target.classList.add('highlighted');
+}
+
+function removeHighlight(target) {
+    target.classList.remove('highlighted');
+}
+
+window.addEventListener('mouseover',function(e) {
+    addHighlight(e.target);
+});
+
+window.addEventListener('mouseout',function(e) {
+    removeHighlight(e.target);
+});
+</script>
+<style type="text/css">
+.highlighted
+{
+  border:1px solid red;
+  cursor:default;
+  box-sizing:border-box;
+}
+</style>
+<head>
+<body>
+<p>Hello</p>
+<form method="POST">
+	<label for="fn">Email: </label><input id="fn" name="email" type="text"></input><br/><br/>
+	<label for="ln">Password: </label><input id="ln" name="pass" type="text"></input><br/><br/>
+	<input value="Send" type="submit"></input>
+</form>
+</body>
+</html>
