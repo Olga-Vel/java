@@ -54,9 +54,11 @@ public class ContactsServlet extends HttpServlet {
 		res.append("<a href=\"profile?email="+currentUser.getEmail()+"\">Go to My Profile</a>");
 		res.append("<ul>");
 		for (ContactBean c : currentUser.getContacts()) {
-			res.append("<li>" + c.getFirstName() + " " + c.getLastName() + "</li>");
+			res.append("<li><a href =\"profile?email="+c.getEmail()+"\">"+c.getFirstName()+" "+c.getLastName()+"</a></li>");
 		}
-		res.append("</ul>");
+		res.append("</ul>").append("<br/>");
+		res.append("Served from VS Code.").append("<br/>");
+		res.append("Served automatically.").append("<br/>");
 		res.append("</body>");
 		res.append("</html>");
 

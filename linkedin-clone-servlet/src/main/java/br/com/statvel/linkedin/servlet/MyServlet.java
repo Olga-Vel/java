@@ -3,10 +3,7 @@ package br.com.statvel.linkedin.servlet;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.statvel.linkedin.bean.ContactBean;
+import br.com.statvel.linkedin.dao.LinkedinDao;
 
 
 public class MyServlet extends HttpServlet {
@@ -34,24 +32,11 @@ public class MyServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String email = request.getParameter("email");
 		
-		//session.setAttribute("pass",request.getParameter("pass")); 
-		List<ContactBean> contactList = Arrays.asList(new ContactBean("Joao", "da Silva", "joao@gmail.com"),
-				new ContactBean("Ivan", "Ivanovich", "ivan@gmail.com"),
-				new ContactBean("Jane", "Smith", "jane@gmail.com"));
-		List<ContactBean> currentUserContacts = Arrays.asList(new ContactBean("Joao", "da Silva", "joao@gmail.com"),
-				new ContactBean("Ivan", "Ivanovich", "ivan@gmail.com"),
-				new ContactBean("Jane", "Smith", "jane@gmail.com"));
-		ContactBean currentUser = null;
-		for (ContactBean c : contactList) {
-			if (email.equals(c.getEmail())) {
-				currentUser = c;
-				break;
-			}
-		}
+		LinkedinDao dao = new LinkedinDao();
+		ContactBean currentUser = dao.getContact(email);
 		if (currentUser == null) {
 			response.sendRedirect(request.getContextPath() + "/error");
 		}
-		currentUser.setContacts(currentUserContacts);
 		session.setAttribute("currentUser", currentUser);  
 		response.sendRedirect(request.getContextPath() + "/contacts");
 	}

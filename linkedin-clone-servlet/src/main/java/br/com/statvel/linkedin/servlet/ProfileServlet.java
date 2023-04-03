@@ -2,8 +2,6 @@ package br.com.statvel.linkedin.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.statvel.linkedin.bean.ContactBean;
 import br.com.statvel.linkedin.bean.ProfileBean;
+import br.com.statvel.linkedin.dao.LinkedinDao;
 
 /**
  * Servlet implementation class ProfileServlet
@@ -46,18 +45,9 @@ public class ProfileServlet extends HttpServlet {
 		res.append("You are: ")
 		.append(currentUser.getFirstName()).append(" ")
 		.append(currentUser.getLastName()).append("<br/>");
-		List <ProfileBean> profileList = Arrays.asList(
-				new ProfileBean("Joao", "da Silva", "joao@gmail.com", "Pedreiro", "Big Construjá", "Cocalzinho de Goias"),
-				new ProfileBean("Ivan", "Ivanovich", "ivan@gmail.com", "Engenheiro Aeronautico", "Sukhoi", "Irkutsk"),
-				new ProfileBean("Jane", "Smith", "jane@gmail.com", "Agente de inteligencia", "Abin", "Brasilia"));
 		String email = request.getParameter("email");
-		ProfileBean currentProfile = null;
-		for (ProfileBean p : profileList) {
-			if (email.equals(p.getEmail())) {
-				currentProfile = p;
-				break;
-			}
-		}
+		LinkedinDao dao = new LinkedinDao();
+		ProfileBean currentProfile = dao.getProfile(email);
 		if (currentProfile == null) {
 			response.sendRedirect(request.getContextPath() + "/error");
 		}
