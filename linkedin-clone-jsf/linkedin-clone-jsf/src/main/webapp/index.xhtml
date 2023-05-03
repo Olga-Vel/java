@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<body>
+<h2><h:outputText value="#{indexController.message}"></h:outputText></h2>
+<br/>
+<h:form id="loginForm">
+	<label for="id">Email: </label><p:inputText id="email" value="#{indexController.email}"/><br/>
+	<label for="pass">Password: </label><p:inputText id="pass" value="#{indexController.password}"/><br/>
+	<p:commandButton id="loginButton" type="submit" value="Enter" action="#{indexController.submit()}"/>
+</h:form>
+</body>
+
+</html>
